@@ -223,11 +223,13 @@ Update both `static-assignment` and `site.yml` files to refer the roles
 
 - Declare another variable in both roles `load_balancer_is_required` and set its value to `false` as well
 
+
+
 - Update both assignment and site.yml files respectively
 
 ![](./images/update%20static-ass01.PNG)
 
-![](./images/update%20static-ass02.PNG)
+
 
 `loadbalancers.yml` file
 
@@ -238,7 +240,7 @@ Update both `static-assignment` and `site.yml` files to refer the roles
     - { role: apache, when: enable_apache_lb and load_balancer_is_required }
 ```
 
-
+![](./images/update%20static-ass02.PNG)
 
 `site.yml` file
 
@@ -248,6 +250,7 @@ Update both `static-assignment` and `site.yml` files to refer the roles
          - import_playbook: ../static-assignments/loadbalancers.yml
         when: load_balancer_is_required 
 ```
+![](./images/update%20static-ass03.PNG)
 
 Now you can make use of `env-vars\uat.yml` file to define which loadbalancer to use in UAT environment by setting respective environmental variable to `true`.
 
@@ -257,6 +260,9 @@ You will activate load balancer, and enable `nginx` by setting these in the resp
 enable_nginx_lb: true
 load_balancer_is_required: true
 ```
+![](./images/enable%20apache.PNG)
+
+![](./images/enable%20nginx.PNG)
 
 The same must work with `apache` LB, so you can switch it by setting respective environmental variable to `true` and other to `false`.
 
